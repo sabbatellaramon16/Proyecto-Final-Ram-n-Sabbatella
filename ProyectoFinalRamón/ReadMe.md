@@ -1,6 +1,6 @@
 PROYECTO CODERHOUSE PYTHON
 
-LINK:
+LINK VIDEO: https://drive.google.com/drive/folders/1Mn__xmdIgvN6goknJH_rbt2RPgh7zmPt?usp=sharing
 
 Descripción
 
@@ -21,4 +21,5 @@ Uso:
     Manager: Nombre, Apellido, Club, pais e imagen de los datos agregados, barra de busqueda, boton de detalle y de agregacion de datos.
 
 Autor
+
 Ramón Sabbatella
