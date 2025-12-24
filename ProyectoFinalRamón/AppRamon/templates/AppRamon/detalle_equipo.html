@@ -1,0 +1,14 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1>{{ equipo.nombre }}</h1>
+
+{% if equipo.imagen %}
+    <img src="{{ equipo.imagen.url }}" width="250">
+{% endif %}
+
+<p><strong>País:</strong> {{ equipo.pais }}</p>
+
+<a href="{% url 'Equipos' %}">Volver</a>
+{% endblock %}

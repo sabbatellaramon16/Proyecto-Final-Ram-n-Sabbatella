@@ -1,0 +1,37 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1 class="mb-4">Equipos del fútbol sudamericano</h1>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'crear_equipo' %}" class="btn btn-success mb-3">Agregar equipo</a>
+{% endif %}
+
+<div class="row">
+    {% for equipo in entregables %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+
+                {% if equipo.imagen %}
+                    <img src="{{ equipo.imagen.url }}" class="card-img-top" alt="Imagen del equipo">
+                {% else %}
+                    <img src="{% static 'AppRamon/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ equipo.nombre }}</h5>
+
+                    <a href="{% url 'detalle_equipo' equipo.id %}" class="btn btn-primary">
+                        Ver detalle
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay equipos cargados.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

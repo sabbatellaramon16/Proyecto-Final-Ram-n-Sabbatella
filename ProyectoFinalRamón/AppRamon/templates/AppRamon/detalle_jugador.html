@@ -1,0 +1,16 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1>{{ jugador.nombre }} {{ jugador.apellido }}</h1>
+
+{% if jugador.imagen %}
+    <img src="{{ jugador.imagen.url }}" width="250">
+{% endif %}
+
+<p><strong>Posición:</strong> {{ jugador.posición }}</p>
+<p><strong>Equipo:</strong> {{ jugador.equipo }}</p>
+<p><strong>Nacionalidad:</strong> {{ jugador.nacionalidad }}</p>
+
+<a href="{% url 'Jugadores' %}">Volver</a>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1 class="mb-4">Resultados de búsqueda para: "{{ query }}"</h1>
+
+<div class="container">
+
+    <!-- Jugadores -->
+    {% if jugadores %}
+        <h2 class="mt-4 mb-3">Jugadores</h2>
+        <div class="row">
+            {% for jugador in jugadores %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+
+                        {% if jugador.imagen %}
+                            <img src="{{ jugador.imagen.url }}" class="card-img-top" alt="Imagen del jugador">
+                        {% else %}
+                            <img src="{% static 'AppRamon/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ jugador.nombre }} {{ jugador.apellido }}</h5>
+                            <p class="card-text">
+                                <strong>Posición:</strong> {{ jugador.posición }}<br>
+                                <strong>Equipo:</strong> {{ jugador.equipo }}<br>
+                                <strong>Nacionalidad:</strong> {{ jugador.nacionalidad }}
+                            </p>
+                            <a href="{% url 'detalle_jugador' jugador.id %}" class="btn btn-primary">Ver detalle</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Managers -->
+    {% if managers %}
+        <h2 class="mt-4 mb-3">Managers</h2>
+        <div class="row">
+            {% for manager in managers %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+
+                        {% if manager.imagen %}
+                            <img src="{{ manager.imagen.url }}" class="card-img-top" alt="Imagen del manager">
+                        {% else %}
+                            <img src="{% static 'AppRamon/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ manager.nombre }} {{ manager.apellido }}</h5>
+                            <p class="card-text">
+                                <strong>Equipo:</strong> {{ manager.equipo }}<br>
+                                <strong>Nacionalidad:</strong> {{ manager.nacionalidad }}
+                            </p>
+                            <a href="{% url 'detalle_manager' manager.id %}" class="btn btn-primary">Ver detalle</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Equipos -->
+    {% if equipos %}
+        <h2 class="mt-4 mb-3">Equipos</h2>
+        <div class="row">
+            {% for equipo in equipos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+
+                        {% if equipo.imagen %}
+                            <img src="{{ equipo.imagen.url }}" class="card-img-top" alt="Imagen del equipo">
+                        {% else %}
+                            <img src="{% static 'AppRamon/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ equipo.nombre }}</h5>
+                            <p class="card-text">
+                                <strong>País:</strong> {{ equipo.pais }}
+                            </p>
+                            <a href="{% url 'detalle_equipo' equipo.id %}" class="btn btn-primary">Ver detalle</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Competencias -->
+    {% if competencias %}
+        <h2 class="mt-4 mb-3">Competencias</h2>
+        <div class="row">
+            {% for competencia in competencias %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+
+                        {% if competencia.imagen %}
+                            <img src="{{ competencia.imagen.url }}" class="card-img-top" alt="Imagen de la competencia">
+                        {% else %}
+                            <img src="{% static 'AppRamon/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ competencia.nombre }}</h5>
+                            <p class="card-text">
+                                <strong>País:</strong> {{ competencia.pais }}
+                            </p>
+                            <a href="{% url 'detalle_competencia' competencia.id %}" class="btn btn-primary">Ver detalle</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if not jugadores and not managers and not equipos and not competencias %}
+        <p class="mt-4">No se encontraron resultados.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

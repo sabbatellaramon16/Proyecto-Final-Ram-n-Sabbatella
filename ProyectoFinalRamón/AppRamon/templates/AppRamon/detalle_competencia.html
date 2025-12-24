@@ -1,0 +1,14 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1>{{ competencia.nombre }}</h1>
+
+{% if competencia.imagen %}
+    <img src="{{ competencia.imagen.url }}" width="250">
+{% endif %}
+
+<p><strong>País:</strong> {{ competencia.pais }}</p>
+
+<a href="{% url 'Competencias' %}">Volver</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "AppRamon/inicio.html" %}
+
+{% block contenidoQueCambia %}
+<h2 class="mb-4">Agregar jugador</h2>
+
+<form method="post" enctype="multipart/form-data" class="card p-4 shadow">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success" type="submit">Guardar jugador</button>
+</form>
+
+{% endblock %}

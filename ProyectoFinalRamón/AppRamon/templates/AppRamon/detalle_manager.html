@@ -1,0 +1,15 @@
+{% extends "AppRamon/inicio.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1>{{ manager.nombre }} {{ manager.apellido }}</h1>
+
+{% if manager.imagen %}
+    <img src="{{ manager.imagen.url }}" width="250">
+{% endif %}
+
+<p><strong>Equipo:</strong> {{ manager.equipo }}</p>
+<p><strong>Nacionalidad:</strong> {{ manager.nacionalidad }}</p>
+
+<a href="{% url 'Managers' %}">Volver</a>
+{% endblock %}
